@@ -11,18 +11,7 @@ Terraform module that establishes a full cross-region VPC peering link between *
 - **Pairs with an in-region Lambda** — `lambda-sydney/` holds the Node.js handler that runs in the peered Sydney VPC, reachable from Tokyo once peering is up.
 
 ## Architecture
-
-```
- Tokyo (ap-northeast-1)           Sydney (ap-southeast-2)
- vpc-xxxxxxxxxxxxxxxxx            vpc-xxxxxxxxxxxxxxxxxx
- CIDR 10.50.0.0/16                CIDR 10.0.0.0/16
-        │                                │
-        │          aws_vpc_peering_connection
-        └──────────────────┬─────────────┘
-                           │  tokyo_sydney_peering
-           (all RTs → 10.0.0.0/16 via peering)
-           (all RTs → 10.50.0.0/16 via peering)
-```
+![Architecture Diagram](./architecture.png)
 
 ## Tech stack
 
